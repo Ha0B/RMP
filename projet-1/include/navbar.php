@@ -34,10 +34,6 @@ $connecte = isset($_SESSION['utilisateur']) && !empty($_SESSION['utilisateur']);
                     </li>
                 <?php endif; ?>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="text" placeholder="Chercher...">
-                <button class="btn btn-primary" type="button">Chercher</button>
-            </form>
         </div>
     </div>
 </nav>
