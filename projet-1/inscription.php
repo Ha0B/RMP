@@ -63,7 +63,7 @@
                 </div>
                 <div class="row my-3">
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Numéro de Téléphone" maxlength="10" name="phone">
+                        <input type="tel" class="form-control" placeholder="Numéro de Téléphone" maxlength="10" name="phone">
                     </div>
                     <div class="col">
                         <input type="text" class="form-control" placeholder="Sexe" name="sexe">

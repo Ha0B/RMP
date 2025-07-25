@@ -1,6 +1,8 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
-    $connecte = isset($_SESSION['utilisateur']) && !empty($_SESSION['utilisateur']);
+}
+$connecte = isset($_SESSION['utilisateur']) && !empty($_SESSION['utilisateur']);
 ?>
 <nav class="navbar navbar-expand-sm" style="background-color: #e3f2fd;" data-bs-theme="light">
     <div class="container-fluid">
@@ -16,22 +18,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="annonce.php">Annonce</a>
                 </li>
-                <?php if ($connecte): {?>
+                <?php if ($connecte): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="ajouter_annonce.php">Ajouter une Annonce</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Compte
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="connection.php">Se Connecter</a></li>
-                            <li><a class="dropdown-item" href="inscription.php">S'inscrire</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php" >Se Déconnecter</a>
                     </li>
-                <?php }else: ?>
+                <?php else: ?>
                     <li class="nav-item">
                         <a class="nav-link" href="connection.php">Se Connecter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="inscription.php">S'inscrire</a>
                     </li>
                 <?php endif; ?>
             </ul>

@@ -1,3 +1,7 @@
+<?php
+session_start();
+include "include/navbar.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +13,6 @@
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-    <?php
-    include "include/navbar.php";
-    ?>
     <div class="container my-3">
         <?php
         if(isset($_POST['con'])){
@@ -22,8 +23,7 @@
                 $sqlstate = $PDO -> prepare('select * from utilisateur where email = ? and mot_de_passe = ?');
                 $sqlstate -> execute([$email , $pwd]);
                 if( $sqlstate -> rowCount() > 0 ){
-                    session_start();
-                    $_SESSION['utilisateur'] = $sqlstate->fetch();
+                    $_SESSION['utilisateur'] = $sqlstate->fetch(PDO::FETCH_ASSOC);
                     header('location:index.php');
                 }else{
                     ?>
