@@ -7,7 +7,7 @@ $PDO = new PDO('mysql:host=localhost;dbname=rmp','root','yassine123');
 // Récupérer les filtres
 $ville = isset($_GET['ville']) ? trim($_GET['ville']) : '';
 $prixMax = isset($_GET['prix_max']) ? floatval($_GET['prix_max']) : null;
-$personnesMin = isset($_GET['personnes_min']) ? intval($_GET['personnes_min']) : null;
+$personnesMax = isset($_GET['personnes_max']) ? intval($_GET['personnes_max']) : null;
 
 
 $query = "SELECT * FROM annonce WHERE 1=1";
@@ -21,9 +21,9 @@ if (!empty($prixMax)) {
     $query .= " AND prix_par_personne <= ?";
     $params[] = $prixMax;
 }
-if (!empty($personnesMin)) {
-    $query .= " AND nombre_personnes >= ?";
-    $params[] = $personnesMin;
+if (!empty($personnesMax)) {
+    $query .= " AND nombre_personnes <= ?";
+    $params[] = $personnesMax;
 }
 
 $query .= " ORDER BY date_disponibilite DESC";
@@ -52,7 +52,7 @@ $annonces = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <input type="number" step="0.1" name="prix_max" class="form-control" placeholder="Prix max (MAD)" value="<?= htmlspecialchars($prixMax) ?>">
         </div>
         <div class="col-md-3">
-            <input type="number" name="personnes_min" class="form-control" placeholder="Places min" value="<?= htmlspecialchars($personnesMin) ?>">
+            <input type="number" name="personnes_max" class="form-control" placeholder="Places max" value="<?= htmlspecialchars($personnesMax) ?>">
         </div>
         <div class="col-md-2 d-grid">
             <button class="btn btn-primary" type="submit">Filtrer</button>
@@ -80,6 +80,7 @@ $annonces = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <li><strong>Prix/personne :</strong> <?= $annonce['prix_par_personne'] ?> MAD</li>
                             <li><strong>Date dispo :</strong> <?= $annonce['date_disponibilite'] ?></li>
                         </ul>
+                        <a href="annonce-1.php?id=<?= $annonce['id_annonce'] ?>" class="btn btn-primary">Voir Annonce</a>
                     </div>
                 </div>
             </div>

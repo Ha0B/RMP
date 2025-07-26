@@ -25,10 +25,6 @@ $connecte = isset($_SESSION['utilisateur']) && !empty($_SESSION['utilisateur']);
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php" >Se Déconnecter</a>
                     </li>
-                    <li class="nav-item">
-                        <span class="nav-link">👤 <?= htmlspecialchars($_SESSION['utilisateur']['nom']) ?>
-                        <?= htmlspecialchars($_SESSION['utilisateur']['prenom']) ?></span>
-                    </li>
                 <?php else: ?>
                     <li class="nav-item">
                         <a class="nav-link" href="connection.php">Se Connecter</a>
@@ -38,6 +34,12 @@ $connecte = isset($_SESSION['utilisateur']) && !empty($_SESSION['utilisateur']);
                     </li>
                 <?php endif; ?>
             </ul>
+            <?php if ($connecte): ?>
+            <span class="nav-text">
+                        👤 <?= htmlspecialchars($_SESSION['utilisateur']['nom']) ?>
+                        <?= htmlspecialchars($_SESSION['utilisateur']['prenom']) ?>
+            </span>
+            <?php endif; ?>
         </div>
     </div>
 </nav>
