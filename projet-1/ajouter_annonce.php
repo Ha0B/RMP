@@ -30,7 +30,7 @@
                 move_uploaded_file($_FILES['image']['tmp_name'],"upload/".$filename);
             }
             if (!empty($filename) && !empty($desc) && !empty($prix) && !empty($date) && !empty($ville) && !empty($adresse) && !empty($nbr) && !empty($image)){
-                $PDO = new PDO('mysql:host=localhost;dbname=rmp','root','');
+                $PDO = new PDO('mysql:host=localhost;dbname=rmp','root','yassine123');
                 $sqlstate = $PDO -> prepare('insert into annonce values (null,?,?,?,?,?,?,?,?,?)');
                 $sqlstate -> execute([$titre,$desc,$ville,$adresse,$nbr,$prix,$date,$uti,$filename]);
                 ?>

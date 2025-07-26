@@ -22,7 +22,7 @@
                 $tele = $_POST['phone'] ;
                 $sexe = $_POST['sexe'] ;
                 if(!empty($nom) && !empty($prenom) && !empty($email) && !empty($pwd) && !empty($tele) && !empty($sexe)){
-                    $PDO = new PDO("mysql:host=localhost;dbname=rmp", "root", "");
+                    $PDO = new PDO("mysql:host=localhost;dbname=rmp", "root", "yassine123");
                     $sqlstate = $PDO -> prepare('insert into utilisateur values (null , ? , ? , ?, ?, ?, ?)');
                     $sqlstate -> execute([$nom,$prenom,$email,$pwd,$tele,$sexe]);
                     ?>

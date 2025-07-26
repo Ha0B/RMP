@@ -19,7 +19,7 @@ include "include/navbar.php";
             $email = $_POST['email'] ;
             $pwd = $_POST['pwd'] ;
             if( !empty($email) && !empty($pwd)){
-                $PDO = new PDO('mysql:host=localhost;dbname=rmp','root','');
+                $PDO = new PDO('mysql:host=localhost;dbname=rmp','root','yassine123');
                 $sqlstate = $PDO -> prepare('select * from utilisateur where email = ? and mot_de_passe = ?');
                 $sqlstate -> execute([$email , $pwd]);
                 if( $sqlstate -> rowCount() > 0 ){
