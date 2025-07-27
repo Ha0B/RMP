@@ -49,13 +49,13 @@ $annonces = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <input type="text" name="ville" class="form-control" placeholder="Ville" value="<?= htmlspecialchars($ville) ?>">
         </div>
         <div class="col-md-3">
-            <input type="number" step="0.1" name="prix_max" class="form-control" placeholder="Prix max (MAD)" value="<?= htmlspecialchars($prixMax) ?>">
+            <input type="number" name="prix_max" class="form-control" placeholder="Prix max (MAD)" value="<?= htmlspecialchars($prixMax) ?>">
         </div>
         <div class="col-md-3">
             <input type="number" name="personnes_max" class="form-control" placeholder="Places max" value="<?= htmlspecialchars($personnesMax) ?>">
         </div>
-        <div class="col-md-2 d-grid">
-            <button class="btn btn-primary" type="submit">Filtrer</button>
+        <div class="col-md-2">
+            <button class="btn btn-outline-primary w-100" type="submit">Filtrer</button>
         </div>
     </form>
 
