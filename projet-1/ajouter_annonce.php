@@ -15,7 +15,7 @@
 <body>
    <?php
         if (isset($_POST['ajouter'])){
-            $uti = $_SESSION['utilisateur']['id_user'];
+            $uti = $_SESSION['utilisateur']['id_user'] ;
             $titre = htmlspecialchars($_POST['titre']) ;
             $ville  = htmlspecialchars($_POST['ville']) ;
             $adresse = htmlspecialchars($_POST['adresse']) ;
@@ -30,7 +30,7 @@
                 move_uploaded_file($_FILES['image']['tmp_name'],"upload/".$filename);
             }
             if (!empty($filename) && !empty($desc) && !empty($prix) && !empty($date) && !empty($ville) && !empty($adresse) && !empty($nbr) && !empty($image)){
-                $PDO = new PDO('mysql:host=localhost;dbname=rmp','root','yassine123');
+                $PDO = new PDO('mysql:host=localhost;dbname=rmp','root','');
                 $sqlstate = $PDO -> prepare('insert into annonce values (null,?,?,?,?,?,?,?,?,?)');
                 $sqlstate -> execute([$titre,$desc,$ville,$adresse,$nbr,$prix,$date,$uti,$filename]);
                 ?>

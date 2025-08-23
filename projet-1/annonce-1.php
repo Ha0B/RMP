@@ -10,8 +10,7 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 $id = intval($_GET['id']);
 
 try {
-    $PDO = new PDO('mysql:host=localhost;dbname=rmp', 'root', 'yassine123');
-    // Utilisation de id_annonce dans la clause WHERE
+    $PDO = new PDO('mysql:host=localhost;dbname=rmp', 'root', '');
     $stmt = $PDO->prepare("
         SELECT a.*, u.telephone 
         FROM annonce a 

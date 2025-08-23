@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "include/navbar.php";
+include "../include/navbar.php";
 
 $PDO = new PDO('mysql:host=localhost;dbname=rmp','root','');
 
@@ -30,6 +30,7 @@ $query .= " ORDER BY date_disponibilite DESC";
 $stmt = $PDO->prepare($query);
 $stmt->execute($params);
 $annonces = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -60,16 +61,10 @@ $annonces = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </form>
 
     <div class="row">
-        <?php if (empty($annonces)): ?>
-            <div class="col-12">
-                <div class="alert alert-warning">Aucune annonce trouvée avec les critères donnés.</div>
-            </div>
-        <?php endif; ?>
-
         <?php foreach ($annonces as $annonce): ?>
             <div class="col-md-4 mb-4">
                 <div class="card h-100 shadow-sm">
-                    <img src="upload/<?= htmlspecialchars($annonce['image']) ?>" class="card-img-top" alt="Image Annonce" style="height: 200px; object-fit: cover;">
+                    <img src="../upload/<?= htmlspecialchars($annonce['image']) ?>" class="card-img-top" alt="Image Annonce" style="height: 200px; object-fit: cover;">
                     <div class="card-body">
                         <h5 class="card-title"><?= htmlspecialchars($annonce['titre']) ?></h5>
                         <p class="card-text"><?= nl2br(htmlspecialchars(substr($annonce['description'], 0, 100))) ?>...</p>
@@ -78,9 +73,15 @@ $annonces = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <li><strong>Adresse :</strong> <?= htmlspecialchars($annonce['adresse']) ?></li>
                             <li><strong>Places dispo :</strong> <?= $annonce['nombre_personnes'] ?></li>
                             <li><strong>Prix/personne :</strong> <?= $annonce['prix_par_personne'] ?> MAD</li>
-                            <li><strong>Date dispo :</strong> <?= $annonce['date_disponibilite'] ?></li>
+                            <li><strong>Date disponibilite :</strong> <?= $annonce['date_disponibilite'] ?></li>
                         </ul>
-                        <a href="annonce-1.php?id=<?= $annonce['id_annonce'] ?>" class="btn btn-primary">Voir Annonce</a>
+
+                        <form method="get" >
+                            <input type="hidden" name="id_annonce" value="<?= $annonce['id_annonce'] ?>">
+                            <a href="/Projet-1/annonce-1.php?id=<?= $annonce['id_annonce'] ?>" class="btn btn-primary">Voir Annonce</a>
+                            <input type="hidden" name="id_annonce" value="<?= $annonce['id_annonce'] ?>">
+                            <a href="SuppAnnonce.php?id=<?= $annonce['id_annonce'] ?>" class="btn btn-danger">Supprimer</a>
+                        </form>
                     </div>
                 </div>
             </div>
