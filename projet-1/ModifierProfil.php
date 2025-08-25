@@ -56,8 +56,8 @@
               <input type="date" name="dateNai" class="form-control" value="<?= htmlspecialchars($utilisateur['date_naissance']) ?>">
             </div>
             <div class="mb-3">
-              <label class="form-label">Nouveau mot de passe (laisser vide si inchangé)</label>
-              <input type="password" name="mdp" class="form-control">
+              <label class="form-label">Nouveau mot de passe</label>
+              <input type="text" name="mdp" class="form-control" value="<?= htmlspecialchars($utilisateur['mot_de_passe']) ?>">
             </div>
             <div class="d-flex justify-content-between">
               <a href="profil.php" class="btn btn-secondary">Annuler</a>
