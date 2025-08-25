@@ -1,8 +1,7 @@
 <?php
 session_start();
 include "../include/navbar.php";
-
-$PDO = new PDO('mysql:host=localhost;dbname=rmp','root','');
+require_once "../include/DB.php";
 
 // Récupérer les filtres
 $ville = isset($_GET['ville']) ? trim($_GET['ville']) : '';
@@ -39,7 +38,7 @@ $annonces = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Liste des Annonces</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script></head>
 <body>
 <div class="container my-5">
     <h2 class="mb-4">Rechercher des Annonces</h2>

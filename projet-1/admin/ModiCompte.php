@@ -93,7 +93,7 @@ if (isset($_POST['supprimer'])){
         <label class="form-label">Role</label>
         <select class="form-select" name="role">
             <option value="admin" <?= ($utilisateur['role'] === "admin") ? "selected" : "" ?>>Admin</option>
-            <option value="utilisateur" <?= ($utilisateur['role'] === "utilisateur") ? "selected" : "" ?>>Utilisateur</option>
+            <option value="utilisateur" <?= ($utilisateur['role'] === "visiteur") ? "selected" : "" ?>>Utilisateur</option>
             <option value="posteur" <?= ($utilisateur['role'] === "posteur") ? "selected" : "" ?>>Posteur</option>
         </select>        
     </div>

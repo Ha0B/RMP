@@ -56,7 +56,7 @@
           <!-- Mot de passe -->
           <div class="mb-3">
             <label class="form-label">Mot de passe</label>
-            <input type="password" name="pwd" class="form-control" placeholder="********" minlength="6">
+            <input type="password" name="pwd" class="form-control" placeholder="********" >
           </div>
 
           <input type="submit" class="btn btn-primary w-100" name="connexion" value="Se connecter">

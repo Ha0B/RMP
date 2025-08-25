@@ -21,7 +21,7 @@
       $naissance = $_POST['naissance'] ;
       $sexe = $_POST['sexe'] ;
       if( !empty($nom) && !empty($prenom) && !empty($email) && !empty($pwd) && !empty($tele) && !empty($naissance) && !empty($sexe) ){
-        $sqlState = $PDO -> prepare('insert into utilisateur values (null,?,?,?,?,?,?,null,?,null)');
+        $sqlState = $PDO -> prepare('INSERT INTO utilisateur (nom, prenom, email, mot_de_passe, telephone, date_naissance, sexe) VALUES (?,?,?,?,?,?,?) ');
         $sqlState -> execute([$nom , $prenom , $email , $pwd , $tele , $naissance , $sexe ]);
         header('location:connection.php');
       }else{
@@ -97,5 +97,6 @@
     </div>
   </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
